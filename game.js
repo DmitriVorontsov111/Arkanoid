@@ -285,7 +285,7 @@ function drawGame() {
         );
     }
 
-    // Мяч
+    // Ball
     if (ballImage.complete && ballImage.naturalWidth >= 20) {
         ctx.drawImage(
             ballImage,
@@ -295,19 +295,19 @@ function drawGame() {
         );
     }
 
-    // Счёт
+    // score
     ctx.fillStyle = "white";
     ctx.font = "18px Arial";
-    ctx.fillText("Счёт: " + score, 10, H - 10);
+    ctx.fillText("score: " + score, 10, H - 10);
 
-    // Подсказка перед запуском
+    // A tip before you start
     if (!ball.launched && !gameOver && !won) {
         ctx.textAlign = "center";
-        ctx.fillText("Нажми ПРОБЕЛ, чтобы начать", W / 2, H - 55);
+        ctx.fillText("Press SPACE, to start", W / 2, H - 55);
         ctx.textAlign = "left";
     }
 
-    // Сообщение о проигрыше или победе
+    // Notification of a loss or a win
     if (gameOver || won) {
         ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
         ctx.fillRect(0, 0, W, H);
@@ -316,14 +316,14 @@ function drawGame() {
         ctx.textAlign = "center";
         ctx.font = "32px Arial";
         ctx.fillText(
-            won ? "Ты победил!" : "Игра окончена!",
+            won ? "You won!" : "Game over!",
             W / 2,
             H / 2
         );
 
         ctx.font = "18px Arial";
         ctx.fillText(
-            "Нажми R, чтобы начать заново",
+            "Press R, to start over",
             W / 2,
             H / 2 + 35
         );
