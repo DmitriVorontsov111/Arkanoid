@@ -1,28 +1,21 @@
+let game = {
+    start: function() {
+        this.ctx = document
+            .getElementById("mycanvas")
+            .getContext("2d");
 
-const canvas = document.getElementById("mycanvas");
-const ctx = canvas.getContext("2d");
+        let background = new Image();
 
-const background = new Image();
-background.src = "img/background.png";
+        background.onload = () => {
+            window.requestAnimationFrame(() => {
+                this.ctx.drawImage(background, 0, 0);
+            });
+        };
 
-function drawGame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (background.complete && background.naturalWidth > 0) {
-        ctx.drawImage(
-            background,
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
+        background.src = "img/background.png";
     }
-}
-
-background.onload = drawGame;
-background.onerror = () => {
-    console.error("Taustapildi laadimine ebaõnnestus!");
 };
 
-drawGame();
-
+window.addEventListener("load", () => {
+    game.start();
+});
